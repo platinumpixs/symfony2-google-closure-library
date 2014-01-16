@@ -1,0 +1,33 @@
+{
+    "name": "platinumpixs/symfony2-google-closure-library",
+    "homepage": "https://github.com/platinumpixs/symfony2-google-closure-library",
+    "description": "Provides a Assetic Filter For the Google Closure Library",
+    "keywords": [
+        "symfony",
+        "symfony 2",
+        "google",
+        "google closure library",
+        "assetic",
+        "assetic filter"
+    ],
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Platinum Pixs",
+            "homepage": "http://www.platinumpixs.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.7",
+        "symfony/assetic-bundle": "*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "PlatinumPixs\\GoogleClosureLibrary": "" }
+    },
+    "target-dir": "PlatinumPixs/GoogleClosureLibrary",
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    }
+}
