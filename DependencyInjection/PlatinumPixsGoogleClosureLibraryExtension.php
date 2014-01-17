@@ -14,7 +14,7 @@
  * permissions and limitations under the License.
  */
 
-namespace PlatinumPixsAssetic\DependencyInjection;
+namespace PlatinumPixs\GoogleClosureLibrary\DependencyInjection;
 
 use \Symfony\Component\HttpKernel\DependencyInjection\Extension,
     \Symfony\Component\DependencyInjection\ContainerBuilder,
@@ -25,7 +25,7 @@ use \Symfony\Component\HttpKernel\DependencyInjection\Extension,
 /**
  * Holds the dependency injection setup for the assetic information
  */
-class PlatinumPixsAsseticExtension extends Extension
+class PlatinumPixsGoogleClosureLibraryExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
