@@ -36,17 +36,17 @@ class PlatinumPixsGoogleClosureLibraryExtension extends Extension
         $processor = new Processor();
         $configuration = new Configuration();
 
-        if (isset($configs[1]['closureCompiler']['formatting']))
+        if (isset($configs[1]['platinum_pixs_google_closure_library']['formatting']))
         {
-            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--formatting=%s", $configs[1]['closureCompiler']['formatting']);
+            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--formatting=%s", $configs[1]['platinum_pixs_google_closure_library']['formatting']);
         }
-        elseif (isset($configs[0]['closureCompiler']['formatting']))
+        elseif (isset($configs[0]['platinum_pixs_google_closure_library']['formatting']))
         {
-            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--formatting=%s", $configs[0]['closureCompiler']['formatting']);
+            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--formatting=%s", $configs[0]['platinum_pixs_google_closure_library']['formatting']);
         }
 
-        if ((isset($configs[1]['closureCompiler']['debug']) && $configs[1]['closureCompiler']['debug'] === TRUE) ||
-            (isset($configs[0]['closureCompiler']['debug']) && $configs[0]['closureCompiler']['debug'] === TRUE))
+        if ((isset($configs[1]['platinum_pixs_google_closure_library']['debug']) && $configs[1]['platinum_pixs_google_closure_library']['debug'] === TRUE) ||
+            (isset($configs[0]['platinum_pixs_google_closure_library']['debug']) && $configs[0]['platinum_pixs_google_closure_library']['debug'] === TRUE))
         {
             //$configs[0]['closureCompiler']['compilerFlags'][] = sprintf("--debug=%s", 'true');
             $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", 'true');
@@ -59,10 +59,10 @@ class PlatinumPixsGoogleClosureLibraryExtension extends Extension
 
         $config = $processor->processConfiguration($configuration, $configs);
 
-        $container->setParameter('platinum_pixs_google_closure_library.outputMode', $config['closureCompiler']['outputMode']);
-        $container->setParameter('platinum_pixs_google_closure_library.compilerFlags', $config['closureCompiler']['compilerFlags']);
-        $container->setParameter('platinum_pixs_google_closure_library.externs', $config['closureCompiler']['externs']);
-        $container->setParameter('platinum_pixs_google_closure_library.root', $config['closureCompiler']['root']);
+        $container->setParameter('platinum_pixs_google_closure_library.outputMode', $config['outputMode']);
+        $container->setParameter('platinum_pixs_google_closure_library.compilerFlags', $config['compilerFlags']);
+        $container->setParameter('platinum_pixs_google_closure_library.externs', $config['externs']);
+        $container->setParameter('platinum_pixs_google_closure_library.root', $config['root']);
     }
 
 }

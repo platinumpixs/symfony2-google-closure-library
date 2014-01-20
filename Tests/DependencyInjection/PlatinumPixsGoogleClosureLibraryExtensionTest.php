@@ -75,7 +75,7 @@ class PlatinumPixsGoogleClosureLibraryExtensionTest extends \PHPUnit_Framework_T
                 'outputMode'        => 'compiled',
                 'compilerFlags'     => array(
                     '--compilation_level=ADVANCED_OPTIMIZATIONS',
-                    "--define='somevariableinside=%somevalue%'"
+                    "--define='somevariableinside=somevalue'"
                 ),
                 'externs'           => array(
                     "src/PlatinumPixs/TestBundle/Resources/javascript/loggly-externs.js"
