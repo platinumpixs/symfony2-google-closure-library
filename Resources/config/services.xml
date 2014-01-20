@@ -6,17 +6,17 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="platinum_pixs_google_closure_library.closurebuilder.class">PlatinumPixsAssetic\Filter\ClosureBuilderFilter</parameter>
+        <parameter key="platinum_pixs_google_closure_library.closurebuilder.class">PlatinumPixs\GoogleClosureLibrary\Filter\ClosureBuilderFilter</parameter>
     </parameters>
 
     <services>
         <service id="platinum_pixs_google_closure_library.closurebuilder" class="%platinum_pixs_google_closure_library.closurebuilder.class%">
             <tag name="assetic.filter" alias="closurebuilder" />
             <argument>%webroot%</argument>
-            <argument>%platinum_pixs_google_closure_library.closureCompiler.outputMode%</argument>
-            <argument>%platinum_pixs_google_closure_library.closureCompiler.compilerFlags%</argument>
-            <argument>%platinum_pixs_google_closure_library.closureCompiler.externs%</argument>
-            <argument>%platinum_pixs_google_closure_library.closureCompiler.root%</argument>
+            <argument>%platinum_pixs_google_closure_library.outputMode%</argument>
+            <argument>%platinum_pixs_google_closure_library.compilerFlags%</argument>
+            <argument>%platinum_pixs_google_closure_library.externs%</argument>
+            <argument>%platinum_pixs_google_closure_library.root%</argument>
         </service>
     </services>
 </container>

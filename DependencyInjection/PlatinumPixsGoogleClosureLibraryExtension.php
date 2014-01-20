@@ -38,31 +38,31 @@ class PlatinumPixsGoogleClosureLibraryExtension extends Extension
 
         if (isset($configs[1]['closureCompiler']['formatting']))
         {
-            $configs[0]['closureCompiler']['compilerFlags'][] = sprintf("--formatting=%s", $configs[1]['closureCompiler']['formatting']);
+            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--formatting=%s", $configs[1]['closureCompiler']['formatting']);
         }
         elseif (isset($configs[0]['closureCompiler']['formatting']))
         {
-            $configs[0]['closureCompiler']['compilerFlags'][] = sprintf("--formatting=%s", $configs[0]['closureCompiler']['formatting']);
+            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--formatting=%s", $configs[0]['closureCompiler']['formatting']);
         }
 
         if ((isset($configs[1]['closureCompiler']['debug']) && $configs[1]['closureCompiler']['debug'] === TRUE) ||
             (isset($configs[0]['closureCompiler']['debug']) && $configs[0]['closureCompiler']['debug'] === TRUE))
         {
             //$configs[0]['closureCompiler']['compilerFlags'][] = sprintf("--debug=%s", 'true');
-            $configs[0]['closureCompiler']['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", 'true');
+            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", 'true');
         }
         else
         {
-            $configs[0]['closureCompiler']['compilerFlags'][] = sprintf("--debug=%s", 'false');
-            $configs[0]['closureCompiler']['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", 'false');
+            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--debug=%s", 'false');
+            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", 'false');
         }
 
         $config = $processor->processConfiguration($configuration, $configs);
 
-        $container->setParameter('platinum_pixs_assetic.closureCompiler.outputMode', $config['closureCompiler']['outputMode']);
-        $container->setParameter('platinum_pixs_assetic.closureCompiler.compilerFlags', $config['closureCompiler']['compilerFlags']);
-        $container->setParameter('platinum_pixs_assetic.closureCompiler.externs', $config['closureCompiler']['externs']);
-        $container->setParameter('platinum_pixs_assetic.closureCompiler.root', $config['closureCompiler']['root']);
+        $container->setParameter('platinum_pixs_google_closure_library.outputMode', $config['closureCompiler']['outputMode']);
+        $container->setParameter('platinum_pixs_google_closure_library.compilerFlags', $config['closureCompiler']['compilerFlags']);
+        $container->setParameter('platinum_pixs_google_closure_library.externs', $config['closureCompiler']['externs']);
+        $container->setParameter('platinum_pixs_google_closure_library.root', $config['closureCompiler']['root']);
     }
 
 }

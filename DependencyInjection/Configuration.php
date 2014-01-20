@@ -29,13 +29,25 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $builder = new TreeBuilder();
+        $rootNode = $builder->root('platinum_pixs_google_closure_library');
 
-        return $treeBuilder
-                    ->root('platinum_pixs_google_closure_library', 'array')
-                        ->useAttributeAsKey('name')
-                            ->prototype('array')->useAttributeAsKey('name')->prototype('variable')->end()
+        return $rootNode->children()
+                    ->scalarNode('outputMode', 'scalar')
+                        ->isRequired()
                         ->end()
-                    ->end();
+                    ->arrayNode('compilerFlags', 'array')
+                        ->isRequired()
+                        ->prototype('scalar')->end()
+                        ->end()
+                    ->arrayNode('root', 'array')
+                        ->isRequired()
+                        ->prototype('scalar')->end()
+                        ->end()
+                    ->arrayNode('externs', 'array')
+                        ->prototype('scalar')->end()
+                        ->end()
+                ->end()
+            ->end();
     }
 }

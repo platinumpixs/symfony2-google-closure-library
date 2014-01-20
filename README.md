@@ -16,5 +16,5 @@ platinum_pixs_google_closure_library:
     externs:
       - "src/PlatinumPixs/TestBundle/Resources/javascript/loggly-externs.js"
     root:
-      javascript:         "src/PlatinumPixs/SupportBundle/Resources/javascript"
+      - "src/PlatinumPixs/SupportBundle/Resources/javascript"
 ```
