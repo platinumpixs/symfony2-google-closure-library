@@ -20,8 +20,15 @@
     ],
     "require": {
         "php": ">=5.3.7",
-        "symfony/assetic-bundle": "*"
+        "symfony/assetic-bundle": "*",
+        "platinumpixs/google-closure-library": "*"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://code.google.com/r/pzorn-php-composer/"
+        }
+    ],
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": { "PlatinumPixs\\GoogleClosureLibrary": "" }

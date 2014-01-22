@@ -88,7 +88,7 @@ class ClosureBuilderFilter implements FilterInterface
         $pb = new ProcessBuilder(array('python', __DIR__ . '/../closure-library/closure/bin/build/closurebuilder.py'));
 
         // automatically add the closure library directory for the javascript
-        $pb->add('--root')->add(__DIR__ . '/../closure-library/');
+        $pb->add('--root')->add(__DIR__ . '/../../../../google-closure-library/PlatinumPixs/GoogleClosureLibraryJavascript/');
 
         foreach ($this->_root as $root)
         {
