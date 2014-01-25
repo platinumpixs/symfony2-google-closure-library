@@ -20,8 +20,8 @@
     ],
     "require": {
         "php": ">=5.3.7",
-        "symfony/assetic-bundle": "*",
-        "platinumpixs/google-closure-library": "dev-master"
+        "platinumpixs/google-closure-library": "*@dev",
+        "symfony/assetic-bundle": "*"
     },
     "minimum-stability": "dev",
     "autoload": {
