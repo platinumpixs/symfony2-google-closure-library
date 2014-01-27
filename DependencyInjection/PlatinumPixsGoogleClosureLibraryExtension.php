@@ -36,25 +36,23 @@ class PlatinumPixsGoogleClosureLibraryExtension extends Extension
         $processor = new Processor();
         $configuration = new Configuration();
 
-        if (isset($configs[1]['platinum_pixs_google_closure_library']['formatting']))
+        if (isset($configs[0]['formatting']))
         {
-            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--formatting=%s", $configs[1]['platinum_pixs_google_closure_library']['formatting']);
-        }
-        elseif (isset($configs[0]['platinum_pixs_google_closure_library']['formatting']))
-        {
-            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--formatting=%s", $configs[0]['platinum_pixs_google_closure_library']['formatting']);
+            $configs[0]['compilerFlags'][] = sprintf("--formatting=%s", $configs[0]['platinum_pixs_google_closure_library']['formatting']);
+            unset($configs[0]['formatting']);
         }
 
-        if ((isset($configs[1]['platinum_pixs_google_closure_library']['debug']) && $configs[1]['platinum_pixs_google_closure_library']['debug'] === TRUE) ||
-            (isset($configs[0]['platinum_pixs_google_closure_library']['debug']) && $configs[0]['platinum_pixs_google_closure_library']['debug'] === TRUE))
+        if (isset($configs[0]['debug']))
         {
-            //$configs[0]['closureCompiler']['compilerFlags'][] = sprintf("--debug=%s", 'true');
-            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", 'true');
+            $configs[0]['compilerFlags'][] = sprintf("--debug=%s", $configs[0]['debug'] === TRUE ? 'true' : 'false');
+            $configs[0]['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", $configs[0]['debug'] === TRUE ? 'true' : 'false');
+
+            unset($configs[0]['debug']);
         }
         else
         {
-            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--debug=%s", 'false');
-            $configs['platinum_pixs_google_closure_library']['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", 'false');
+            $configs[0]['compilerFlags'][] = sprintf("--debug=%s", 'false');
+            $configs[0]['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", 'false');
         }
 
         $config = $processor->processConfiguration($configuration, $configs);
