@@ -27,6 +27,7 @@ use \Symfony\Component\HttpKernel\DependencyInjection\Extension,
  */
 class PlatinumPixsGoogleClosureLibraryExtension extends Extension
 {
+
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -38,7 +39,7 @@ class PlatinumPixsGoogleClosureLibraryExtension extends Extension
 
         if (isset($configs[0]['formatting']))
         {
-            $configs[0]['compilerFlags'][] = sprintf("--formatting=%s", $configs[0]['platinum_pixs_google_closure_library']['formatting']);
+            $configs[0]['compilerFlags'][] = sprintf("--formatting=%s", $configs[0]['formatting']);
             unset($configs[0]['formatting']);
         }
 
