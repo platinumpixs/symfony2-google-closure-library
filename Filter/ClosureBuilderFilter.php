@@ -18,6 +18,7 @@ namespace PlatinumPixs\GoogleClosureLibrary\Filter;
 
 use \Assetic\Filter\FilterInterface,
     \Assetic\Asset\AssetInterface,
+    \Symfony\Component\Process\Process,
     \Symfony\Component\Process\ProcessBuilder,
     \PlatinumPixs\GoogleClosureLibrary\Exception\ProcessorError;
 
@@ -84,8 +85,23 @@ class ClosureBuilderFilter implements FilterInterface
     {
         preg_match('/goog.provide\(\'(.*)\'\);/', $asset->getContent(), $matches);
 
+        // checking for python2.7 because centos 6 has python 2.6 installed by default and won't work
+        $process = new Process('type python2.7');
+        $process->run();
+
+        if ($process->isSuccessful())
+        {
+            $command = 'python2.7';
+        }
+        else
+        {
+            $command = 'python';
+        }
+
+        unset($process);
+
         // the python file builds out the file - https://developers.google.com/closure/library/docs/closurebuilder
-        $pb = new ProcessBuilder(array('python', __DIR__ . '/../closure-library/closure/bin/build/closurebuilder.py'));
+        $pb = new ProcessBuilder(array($command, __DIR__ . '/../../../../google-closure-library/PlatinumPixs/GoogleClosureLibraryJavascript/closure/bin/build/closurebuilder.py'));
 
         // automatically add the closure library directory for the javascript
         $pb->add('--root')->add(__DIR__ . '/../../../../google-closure-library/PlatinumPixs/GoogleClosureLibraryJavascript/');
