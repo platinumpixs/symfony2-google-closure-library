@@ -37,6 +37,12 @@ class PlatinumPixsGoogleClosureLibraryExtension extends Extension
         $processor = new Processor();
         $configuration = new Configuration();
 
+        // merges the configs 1 array key into 0 array key - 1 is from the dev settings
+        if (isset($configs[1]))
+        {
+            $configs = array(0 => array_merge($configs[0], $configs[1]));
+        }
+
         if (isset($configs[0]['formatting']))
         {
             $configs[0]['compilerFlags'][] = sprintf("--formatting=%s", $configs[0]['formatting']);
@@ -45,15 +51,23 @@ class PlatinumPixsGoogleClosureLibraryExtension extends Extension
 
         if (isset($configs[0]['debug']))
         {
-            $configs[0]['compilerFlags'][] = sprintf("--debug=%s", $configs[0]['debug'] === TRUE ? 'true' : 'false');
             $configs[0]['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", $configs[0]['debug'] === TRUE ? 'true' : 'false');
 
             unset($configs[0]['debug']);
         }
         else
         {
-            $configs[0]['compilerFlags'][] = sprintf("--debug=%s", 'false');
             $configs[0]['compilerFlags'][] = sprintf("--define='goog.DEBUG=%s'", 'false');
+        }
+
+        if (isset($configs[0]['debugOutput']))
+        {
+            $configs[0]['compilerFlags'][] = sprintf("--debug=%s", $configs[0]['debugOutput'] === TRUE ? 'true' : 'false');
+            unset($configs[0]['debugOutput']);
+        }
+        else
+        {
+            $configs[0]['compilerFlags'][] = sprintf("--debug=%s", 'false');
         }
 
         $config = $processor->processConfiguration($configuration, $configs);
