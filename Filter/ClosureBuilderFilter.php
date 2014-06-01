@@ -103,6 +103,9 @@ class ClosureBuilderFilter implements FilterInterface
         // the python file builds out the file - https://developers.google.com/closure/library/docs/closurebuilder
         $pb = new ProcessBuilder(array($command, __DIR__ . '/../../../../google-closure-library/PlatinumPixs/GoogleClosureLibraryJavascript/closure/bin/build/closurebuilder.py'));
 
+        // setting the timeout to be 10 minutes - these can take a little bit to run
+        $pb->setTimeout(600);
+
         // automatically add the closure library directory for the javascript
         $pb->add('--root')->add(__DIR__ . '/../../../../google-closure-library/PlatinumPixs/GoogleClosureLibraryJavascript/');
 
